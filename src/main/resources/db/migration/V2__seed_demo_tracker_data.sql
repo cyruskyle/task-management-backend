@@ -1,0 +1,238 @@
+INSERT INTO projects (name, sort_order) VALUES
+    ('Core Experience', 1),
+    ('Workflow', 2),
+    ('Identity', 3),
+    ('Data Platform', 4),
+    ('Access Control', 5);
+
+INSERT INTO tasks (
+    id,
+    reference,
+    name,
+    project_id,
+    story_points,
+    assigned_date,
+    done_date,
+    status,
+    notes
+) VALUES
+    (
+        '00000000-0000-0000-0000-000000000142',
+        'TASK-142',
+        'Align project tabs with workspace filters',
+        (SELECT id FROM projects WHERE name = 'Core Experience'),
+        3,
+        '2026-10-06',
+        '2026-10-10',
+        'RESOLVED',
+        'Merged after accessibility review.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000147',
+        'TASK-147',
+        'Harden task export permissions',
+        (SELECT id FROM projects WHERE name = 'Access Control'),
+        5,
+        '2026-10-08',
+        NULL,
+        'REVIEWING',
+        'Waiting for security sign-off.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000151',
+        'TASK-151',
+        'Add task search across active projects',
+        (SELECT id FROM projects WHERE name = 'Core Experience'),
+        3,
+        '2026-10-09',
+        NULL,
+        'IN_PROGRESS',
+        ''
+    ),
+    (
+        '00000000-0000-0000-0000-000000000156',
+        'TASK-156',
+        'Validate bulk status updates',
+        (SELECT id FROM projects WHERE name = 'Workflow'),
+        2,
+        '2026-10-12',
+        NULL,
+        'TEST',
+        'Regression pass in progress.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000158',
+        'TASK-158',
+        '[BE] Normalize assignee records',
+        (SELECT id FROM projects WHERE name = 'Identity'),
+        5,
+        '2026-10-13',
+        '2026-10-18',
+        'RESOLVED',
+        ''
+    ),
+    (
+        '00000000-0000-0000-0000-000000000163',
+        'TASK-163',
+        'Investigate duplicate done timestamps',
+        (SELECT id FROM projects WHERE name = 'Workflow'),
+        2,
+        '2026-10-15',
+        NULL,
+        'BLOCKED',
+        'Blocked by the upstream migration.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000167',
+        'TASK-167',
+        'Add optimistic task updates',
+        (SELECT id FROM projects WHERE name = 'Core Experience'),
+        3,
+        '2026-10-16',
+        NULL,
+        'REVIEWING',
+        ''
+    ),
+    (
+        '00000000-0000-0000-0000-000000000171',
+        'TASK-171',
+        'Delete archived project data',
+        (SELECT id FROM projects WHERE name = 'Data Platform'),
+        8,
+        '2026-10-19',
+        NULL,
+        'SHELVED',
+        'Deferred to next quarter.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000175',
+        'TASK-175',
+        'Expose project health summary',
+        (SELECT id FROM projects WHERE name = 'Data Platform'),
+        3,
+        '2026-10-20',
+        NULL,
+        'IN_PROGRESS',
+        ''
+    ),
+    (
+        '00000000-0000-0000-0000-000000000179',
+        'TASK-179',
+        'Migrate task notes to structured content',
+        (SELECT id FROM projects WHERE name = 'Data Platform'),
+        5,
+        '2026-10-22',
+        NULL,
+        'TEST',
+        'Sanitization checks pending.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000182',
+        'TASK-182',
+        'Fix stale assignee filter',
+        (SELECT id FROM projects WHERE name = 'Core Experience'),
+        1,
+        '2026-10-23',
+        '2026-10-23',
+        'RESOLVED',
+        ''
+    ),
+    (
+        '00000000-0000-0000-0000-000000000186',
+        'TASK-186',
+        'Define read-only guest policy',
+        (SELECT id FROM projects WHERE name = 'Access Control'),
+        2,
+        '2026-10-26',
+        NULL,
+        'REVIEWING',
+        'Needs a product decision.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000190',
+        'TASK-190',
+        '[BE] Add story point validation',
+        (SELECT id FROM projects WHERE name = 'Workflow'),
+        2,
+        '2026-10-27',
+        NULL,
+        'IN_PROGRESS',
+        ''
+    ),
+    (
+        '00000000-0000-0000-0000-000000000194',
+        'TASK-194',
+        'Keyboard navigation for task tabs',
+        (SELECT id FROM projects WHERE name = 'Core Experience'),
+        2,
+        '2026-10-28',
+        NULL,
+        'TEST',
+        'Focus order verified.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000198',
+        'TASK-198',
+        'Cache project summaries',
+        (SELECT id FROM projects WHERE name = 'Data Platform'),
+        3,
+        '2026-10-29',
+        NULL,
+        'BLOCKED',
+        'Waiting on the shared cache rollout.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000203',
+        'TASK-203',
+        'Document status transition rules',
+        (SELECT id FROM projects WHERE name = 'Identity'),
+        1,
+        '2026-10-30',
+        '2026-10-31',
+        'RESOLVED',
+        ''
+    ),
+    (
+        '00000000-0000-0000-0000-000000000208',
+        'TASK-208',
+        'Audit task import boundary',
+        (SELECT id FROM projects WHERE name = 'Access Control'),
+        3,
+        '2026-11-03',
+        NULL,
+        'IN_PROGRESS',
+        'Imported text must remain untrusted.'
+    ),
+    (
+        '00000000-0000-0000-0000-000000000212',
+        'TASK-212',
+        'Polish empty and loading states',
+        (SELECT id FROM projects WHERE name = 'Core Experience'),
+        2,
+        '2026-11-04',
+        NULL,
+        'TEST',
+        ''
+    );
+
+INSERT INTO task_assignees (task_id, assignee, sort_order) VALUES
+    ('00000000-0000-0000-0000-000000000142', 'A. Cruz', 0),
+    ('00000000-0000-0000-0000-000000000147', 'J. Lim', 0),
+    ('00000000-0000-0000-0000-000000000151', 'M. Reyes', 0),
+    ('00000000-0000-0000-0000-000000000156', 'T. Santos', 0),
+    ('00000000-0000-0000-0000-000000000158', 'K. Flores', 0),
+    ('00000000-0000-0000-0000-000000000163', 'J. Lim', 0),
+    ('00000000-0000-0000-0000-000000000163', 'M. Reyes', 1),
+    ('00000000-0000-0000-0000-000000000167', 'A. Cruz', 0),
+    ('00000000-0000-0000-0000-000000000171', 'M. Reyes', 0),
+    ('00000000-0000-0000-0000-000000000175', 'T. Santos', 0),
+    ('00000000-0000-0000-0000-000000000179', 'K. Flores', 0),
+    ('00000000-0000-0000-0000-000000000182', 'J. Lim', 0),
+    ('00000000-0000-0000-0000-000000000186', 'A. Cruz', 0),
+    ('00000000-0000-0000-0000-000000000190', 'M. Reyes', 0),
+    ('00000000-0000-0000-0000-000000000194', 'T. Santos', 0),
+    ('00000000-0000-0000-0000-000000000198', 'J. Lim', 0),
+    ('00000000-0000-0000-0000-000000000203', 'K. Flores', 0),
+    ('00000000-0000-0000-0000-000000000208', 'M. Reyes', 0),
+    ('00000000-0000-0000-0000-000000000208', 'T. Santos', 1),
+    ('00000000-0000-0000-0000-000000000212', 'A. Cruz', 0);
